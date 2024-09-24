@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+    <context-root>/SO_FACT</context-root>
+<!--    <virtual-host>documentaleseta.servizi.findomestic.local</virtual-host>-->
+</jboss-web>

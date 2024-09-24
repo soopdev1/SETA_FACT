@@ -1,0 +1,1 @@
+var BootstrapMarkdown={init:function(){console.log("");}};jQuery(document).ready(function(){BootstrapMarkdown.init();});

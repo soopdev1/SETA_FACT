@@ -1,0 +1,1 @@
+var Scrollable={init:function(){console.log("");}};jQuery(document).ready(function(){Scrollable.init();});
