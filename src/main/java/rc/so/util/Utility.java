@@ -10,7 +10,6 @@ import rc.so.engine.Action;
 import java.io.File;
 import java.util.Random;
 import java.util.ResourceBundle;
-import static java.util.logging.Logger.getLogger;
 import org.apache.commons.io.FileUtils;
 import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
 import static rc.so.engine.Action.log;
@@ -31,12 +30,10 @@ public class Utility {
         String combinedChars = capitalCaseLetters + lowerCaseLetters + specialCharacters + numbers;
         Random random = new Random();
         char[] password = new char[length];
-
         password[0] = lowerCaseLetters.charAt(random.nextInt(lowerCaseLetters.length()));
         password[1] = capitalCaseLetters.charAt(random.nextInt(capitalCaseLetters.length()));
         password[2] = specialCharacters.charAt(random.nextInt(specialCharacters.length()));
         password[3] = numbers.charAt(random.nextInt(numbers.length()));
-
         for (int i = 4; i < length; i++) {
             password[i] = combinedChars.charAt(random.nextInt(combinedChars.length()));
         }
@@ -72,7 +69,7 @@ public class Utility {
         }
         return null;
     }
-
+    
     public static final String PASSWORD = "password";
     public static final String UTF8 = "UTF-8";
     public static final String TRUE = "true";
