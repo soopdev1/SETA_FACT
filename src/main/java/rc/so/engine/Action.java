@@ -63,7 +63,7 @@ public class Action {
     public static final String PAT_7 = "yyyyMMddHHmmssSSS";
     public static final String PAT_8 = "ddMMyyyyHHmmss";
     public static final String PAT_9 = "yyMMddHHmmssSSS";
-    public static final String PATHLOG = "/mnt/temp/log/";
+    public static final String PATHLOG = "/data/datastore/log/";
 
     private static Logger createLog(String appname) {
         Logger logger = getLogger(appname);
