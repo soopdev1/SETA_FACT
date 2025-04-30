@@ -20,9 +20,6 @@
         <title>Findomestic | Crea Utente</title>
         <meta name="description" content="Latest updates and statistic charts">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-
-
-
         <!--begin::Global Theme Styles -->
         <link href="assets/soop/bootstrap.5.0.2.css" rel="stylesheet" type="text/css" />
         <link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
@@ -143,9 +140,8 @@
     </div>
 
 
-
-    <script src="assets/soop/bootstrap.5.0.2.bundle.js" type="text/javascript"></script>
     <script src="assets/soop/jquery-ui.js"></script>
+    <script src="assets/soop/bootstrap.5.0.2.bundle.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="assets/fancy/css/jquery.fancybox.css?v=2.1.5" media="screen" />
     <script type="text/javascript" src="assets/fancy/js/fancy.js"></script>
     <script src="assets/demo/demo2/base/scripts.bundle.js" type="text/javascript"></script>
@@ -157,6 +153,8 @@
     <script src="assets/soop/select2.4.1.0.rc.min.js"></script>
     <script src="assets/soop/tableUtils.js" type="text/javascript"></script>    
     <script src="assets/vendors/custom/sweetalert2/dist/sweetalert2.js" type="text/javascript"></script>
+    
+    <script src="assets/soop/jquery.form.4.2.2.min.js" type="text/javascript"></script>
     <script src="assets/soop/utility.js" type="text/javascript"></script>
     <script src="assets/app/js/webfont.js" type="text/javascript"></script>
     <script src="assets/soop/creauser_js.js" type="text/javascript"></script>

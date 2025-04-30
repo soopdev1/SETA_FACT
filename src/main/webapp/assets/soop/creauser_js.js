@@ -25,11 +25,11 @@ $(document).ready(function () {
             url: "Query",
             data: {type: "checkUsername", username: $("#username").val()},
             success: function (data) {
-                if (data === null || data === 'null') {
-                    check = false;
-                } else {
+                if (data === true || data === 'true') {
                     fastSwalShow("<h5>Attenzione! Username gi&agrave; presente</h5>", "");
                     $("#username").removeClass("is-valid").addClass("is-invalid");
+                } else {
+                    check = false;
                 }
             }
         });
@@ -37,7 +37,6 @@ $(document).ready(function () {
     }
 
     $("#submit").click(function () {
-        //form, success_title_msg, success_msg, ctrl, reload
         submitForm($("#form"), "Creato!", "Utente creato con successo", !ctrlForm(), false);
     });
 });

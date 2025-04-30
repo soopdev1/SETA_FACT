@@ -96,4 +96,5 @@ public class Utility {
     public static final String RECORDID = "RecordID";
     public static final String CONTENTTYPE = "Content-Type";
     public static final String EMAIL = "Email";
+    public static final String EMAILPERSONAL = "Service Findomestic documentaleseta";
 }

@@ -697,7 +697,7 @@ public class FindoDB {
             ResultSet rs = ps.executeQuery();
             return rs.next()
                     ? new User(rs.getString("username"), rs.getString("nome"), rs.getString(COGNOME),
-                            rs.getString("email"), rs.getString(PASSWORD), rs.getString("tipo"))
+                            rs.getString("email"), "ENC PASSWORD", rs.getString("tipo"))
                     : null;
         } catch (Exception ex) {
             insertTR("E", SYSTEM, estraiEccezione(ex));

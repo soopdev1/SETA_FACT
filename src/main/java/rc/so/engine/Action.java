@@ -36,7 +36,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.fileupload2.core.FileItem;
 import org.apache.commons.fileupload2.jakarta.JakartaServletFileUpload;
 import static org.apache.commons.fileupload2.jakarta.JakartaServletFileUpload.isMultipartContent;

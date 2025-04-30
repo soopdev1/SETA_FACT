@@ -44,12 +44,12 @@ import static rc.so.util.Utility.conf;
  */
 public class SendMailJet {
 
-    public static void sendMail(String name, String[] to, String[] bcc, String txt, String subject) {
-        sendMail(name, to, new String[]{}, bcc, txt, subject, null);
+    public static boolean sendMail(String name, String[] to, String[] bcc, String txt, String subject) {
+        return sendMail(name, to, new String[]{}, bcc, txt, subject, null);
     }
 
-    public static void sendMail(String name, String[] to, String txt, String subject) {
-        sendMail(name, to, new String[]{}, new String[]{}, txt, subject, null);
+    public static boolean sendMail(String name, String[] to, String txt, String subject) {
+        return sendMail(name, to, new String[]{}, new String[]{}, txt, subject, null);
     }
 
     public static boolean sendMail(String name, String[] to, String[] cc, String[] bcc, String txt, String subject, File file) {
@@ -118,10 +118,11 @@ public class SendMailJet {
 
         JSONObject mail = new JSONObject().put(FROM, new JSONObject()
                 .put(EMAIL, mailjet_name)
-                .put("Name", name))
+                .put("Name", name)
+        )
                 .put(TO, dest)
-                .put(CC, ccj)
-                .put(BCC, ccn)
+               // .put(CC, ccj)
+               // .put(BCC, ccn)
                 .put(SUBJECT, subject)
                 .put(HTMLPART, txt);
 

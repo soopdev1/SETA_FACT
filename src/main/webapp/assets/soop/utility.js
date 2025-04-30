@@ -6,7 +6,7 @@
 
 function checkEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (email.val() == '' || !re.test(email.val().toLowerCase())) {
+    if (email.val() === '' || !re.test(email.val().toLowerCase())) {
         email.removeClass("is-valid").addClass("is-invalid");
         return true;
     } else {
@@ -20,8 +20,7 @@ function fastSwalElementResponsive(HTMLmessage, buttonMessage) {
         html: HTMLmessage,
         buttonsStyling: false,
         scrollbarPadding: true,
-        confirmButtonText: buttonMessage,
-//        confirmButtonClass: "btn btn-brand",
+        confirmButtonText: buttonMessage
     });
 }
 
@@ -30,10 +29,10 @@ function showLoad() {
         title: '',
         text: '',
         onOpen: function () {
-            swal.showLoading()
+            swal.showLoading();
         },
         customClass: {
-            container: 'my-swal',
+            container: 'my-swal'
         }
     });
 }
@@ -42,10 +41,10 @@ function showLoad(title) {
         title: title,
         text: '',
         onOpen: function () {
-            swal.showLoading()
+            swal.showLoading();
         },
         customClass: {
-            container: 'my-swal',
+            container: 'my-swal'
         }
     });
 }
@@ -61,7 +60,7 @@ function fastSwalShow(HTMLmessage, animation) {
         animation: false,
         customClass: {
             popup: 'animated ' + animation,
-            container: 'my-swal',
+            container: 'my-swal'
         }
     });
 }
@@ -74,7 +73,7 @@ function swalSuccessReload(title, HTMLmessage) {
         "confirmButtonColor": '#363a90',
         "confirmButtonClass": "btn btn-brand",
         customClass: {
-            container: 'my-swal',
+            container: 'my-swal'
         }
     }).then(function () {
         showLoad();
@@ -90,7 +89,7 @@ function swalSuccess(title, HTMLmessage) {
         "confirmButtonColor": '#363a90',
         "confirmButtonClass": "btn btn-brand",
         customClass: {
-            container: 'my-swal',
+            container: 'my-swal'
         }
     });
 }
@@ -101,7 +100,7 @@ function swalError(title, message) {
         "type": "error",
         cancelButtonClass: "btn btn-secondary",
         customClass: {
-            container: 'my-swal',
+            container: 'my-swal'
         }
     });
 }
@@ -112,7 +111,7 @@ function swalWarning(title, message) {
         "type": "warning",
         cancelButtonClass: "btn btn-secondary",
         customClass: {
-            container: 'my-swal',
+            container: 'my-swal'
         }
     });
 }
@@ -128,8 +127,8 @@ function swalConfirm(title, HTMLmessage, func) {
         cancelButtonClass: "btn btn-secondary",
         confirmButtonClass: "btn btn-brand",
         customClass: {
-            popup: 'large-swal animated bounceInUp',
-        },
+            popup: 'large-swal animated bounceInUp'
+        }
     }).then((result) => {
         if (result.value) {
             func();
@@ -156,7 +155,7 @@ function closeSwal() {
 function checkObblFieldsContent(content) {
     var err = false;
     content.find('input.obbligatory').each(function () {
-        if ($(this).val() == '') {
+        if ($(this).val() === '') {
             err = true;
             $(this).removeClass("is-valid").addClass("is-invalid");
         } else {
@@ -164,7 +163,7 @@ function checkObblFieldsContent(content) {
         }
     });
     content.find('textarea.obbligatory').each(function () {
-        if ($(this).val() == '') {
+        if ($(this).val() === '') {
             err = true;
             $(this).removeClass("is-valid").addClass("is-invalid");
         } else {
@@ -172,7 +171,7 @@ function checkObblFieldsContent(content) {
         }
     });
     content.find('select.obbligatory').each(function () {
-        if ($(this).val() == '' || $(this).val() == '-') {
+        if ($(this).val() === '' || $(this).val() === '-') {
             err = true;
             $('#' + this.id + '_div').removeClass("is-valid-select").addClass("is-invalid-select");
         } else {
@@ -204,7 +203,7 @@ function submitForm(form, success_title_msg, success_msg, ctrl, reload) {
             success: function (json) {
                 closeSwal();
                 if (json.result) {
-                    var message = json.message !== null ? ".<br>" + json.message : "";
+                    var message = json.message;
                     if (reload) {
                         swalSuccessReload(success_title_msg, success_msg);
                     } else {

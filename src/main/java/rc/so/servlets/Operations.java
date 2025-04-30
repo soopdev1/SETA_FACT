@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package rc.so.servlets;
 
 import com.google.gson.JsonObject;
@@ -35,6 +34,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import static org.apache.commons.codec.digest.DigestUtils.md5Hex;
 import static rc.so.engine.Action.log;
+import static rc.so.util.Utility.EMAILPERSONAL;
 import static rc.so.util.Utility.estraiEccezione;
 
 /**
@@ -80,11 +80,17 @@ public class Operations extends HttpServlet {
                 request.getParameter("email"), request.getParameter(USERNAME), md5Hex(password),
                 request.getParameter("tipo"))) {
             try {
-                sendMail("Findomestic", new String[]{request.getParameter("email")},
+                boolean res = sendMail(EMAILPERSONAL, new String[]{request.getParameter("email")},
                         "Nuova utenza creata<br><br>username :" + request.getParameter("username") + "<br>password: "
                         + password,
                         "Utente findomestic");
-                resp.addProperty(RESULT, true);
+                if (res) {
+                    resp.addProperty(RESULT, true);
+                    resp.addProperty(MESSAGE, "");
+                } else {
+                    resp.addProperty(RESULT, false);
+                    resp.addProperty(MESSAGE, "Errore: utenza creta ma non e' stato possibile inviare la mail.");
+                }
             } catch (Exception e) {
                 log.severe(estraiEccezione(e));
                 resp.addProperty(RESULT, false);

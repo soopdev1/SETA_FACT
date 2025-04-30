@@ -28,6 +28,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import static org.apache.commons.codec.digest.DigestUtils.md5Hex;
 import static org.apache.commons.lang3.StringUtils.capitalize;
+import static rc.so.util.Utility.EMAILPERSONAL;
 import static rc.so.util.Utility.TRUE;
 
 /**
@@ -86,7 +87,7 @@ public class Login extends HttpServlet {
             if (updatePassword(u.getUsername(), md5Hex(pwd))) {
                 result.addProperty(RESULT, TRUE);
                 try {
-                    sendMail("Findomestic", new String[]{u.getEmail()}, "utente: " + u.getUsername() + "<br>La nuova password : " + pwd + "<br><br>La password puo' essere cambiata dalle impostazioni profilo", "Recupero Password");
+                    sendMail(EMAILPERSONAL, new String[]{u.getEmail()}, "utente: " + u.getUsername() + "<br>La nuova password : " + pwd + "<br><br>La password puo' essere cambiata dalle impostazioni profilo", "Recupero Password");
                 } catch (Exception e) {
                     result.addProperty(RESULT, TRUE);
 //                    result.addProperty(RESULT, FALSE);

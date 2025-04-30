@@ -95,4 +95,9 @@ public class User {
         this.tipo = tipo;
     }
 
+    @Override
+    public String toString() {
+        return "User{" + "username=" + username + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", tipo=" + tipo + ", descrizionetipo=" + descrizionetipo + '}';
+    }
+
 }

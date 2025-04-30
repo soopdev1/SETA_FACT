@@ -248,9 +248,9 @@ public class Query extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType(APPJSON);
         User u = getUserByEmailOrUsername(request.getParameter(USERNAME));
-
         Gson gson = new Gson();
-        response.getWriter().write(gson.toJson(u));
+        String dest = u == null ? "false" : "true";
+        response.getWriter().write(gson.toJson(dest));
         response.getWriter().close();
     }
 
