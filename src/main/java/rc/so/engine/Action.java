@@ -201,8 +201,8 @@ public class Action {
 
     public static void redirect(HttpServletRequest request, HttpServletResponse response, String destination) throws ServletException, IOException {
 
-//        String domain = "";
-        String domain = "https://documentaleseta.servizi.findomestic.local/";
+        String domain = "";
+//        String domain = "https://documentaleseta.servizi.findomestic.local/";
         if (response.isCommitted()) {
             RequestDispatcher dispatcher = request.getRequestDispatcher(domain + destination);
             dispatcher.forward(request, response);

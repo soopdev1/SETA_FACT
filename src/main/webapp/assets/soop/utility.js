@@ -240,3 +240,31 @@ function formattedDateTime(d) {
             .map(n => n < 10 ? `0${n}` : `${n}`).join(':');
     return day + " " + time;
 }
+
+function fieldNameSurnameNEW(field) {
+    var stringToReplace = field.value;
+    var specialChars = "_~`!#$%^&*+=-[]();,/{}|\":<>?£,.àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ°èéòàù§*ç@|!£$%&/()=?^€ì";
+    for (var i = 0; i < specialChars.length; i++) {
+        stringToReplace = stringToReplace.replace(new RegExp("\\" + specialChars[i], 'gi'), '');
+    }
+    stringToReplace = stringToReplace.replace(new RegExp("[0-9]", "g"), "");
+    field.value = stringToReplace;
+}
+function fieldMail(field) {
+    var stringToReplace = field.value;
+    var specialChars = " ~`!#$%^&*+=[]();,/{}|\":<>?£,àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ°èéòàù§*ç|!£$%&/()=?^€ì";
+    for (var i = 0; i < specialChars.length; i++) {
+        stringToReplace = stringToReplace.replace(new RegExp("\\" + specialChars[i], 'gi'), '');
+    }
+    stringToReplace = stringToReplace.replace(new RegExp("[0-9]", "g"), "");
+    field.value = stringToReplace;
+}
+function fieldUsername(field) {
+    var stringToReplace = field.value;
+    var specialChars = " ~`!#$%^&*+=-[]();,/{}|\":<>?£,àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ°èéòàù§*ç@|!£$%&/()=?^€ì";
+    for (var i = 0; i < specialChars.length; i++) {
+        stringToReplace = stringToReplace.replace(new RegExp("\\" + specialChars[i], 'gi'), '');
+    }
+    stringToReplace = stringToReplace.replace(new RegExp("[0-9]", "g"), "");
+    field.value = stringToReplace;
+}

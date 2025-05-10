@@ -29,18 +29,18 @@
         <link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
 
         <link href="assets/demo/demo2/base/style.bundle.css" rel="stylesheet" type="text/css" />
-            <script src="assets/fancy/js/jquery-3.3.1.min.js" type="text/javascript"></script>
-    <script src="assets/fancy/js/jquery.fancybox.2.1.5.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="assets/fancy/js/jquery.fancybox.js?v=2.1.5"></script>
+        <script src="assets/fancy/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <script src="assets/fancy/js/jquery.fancybox.2.1.5.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="assets/fancy/js/jquery.fancybox.js?v=2.1.5"></script>
         <link rel="stylesheet" type="text/css" href="assets/fancy/css/jquery.fancybox.css?v=2.1.5" media="screen" />
-        <script type="text/javascript" src="assets/fancy/js/fancy.js"></script>
+        
         <link href="assets/soop/datatables.bundle.1.11.3.css" rel="stylesheet" type="text/css" />
         <script src="assets/app/fontawesome-free-5.12.1-web/js/all.js" data-auto-replace-svg="nest"></script>
 
         <!--end::Page Vendors Styles -->
         <link rel="shortcut icon" href="favicon.ico" />
         <style>
-            
+
         </style>
     </head>
 
@@ -366,7 +366,6 @@
     <script src="assets/soop/utility.js" type="text/javascript"></script>
     <script src="assets/app/js/webfont.js" type="text/javascript"></script>
     <script src="assets/soop/pratiche_js.js" type="text/javascript"></script>
-    
     <!--end::Page Scripts -->
 </body>
 

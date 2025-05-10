@@ -61,7 +61,7 @@
                                                     <span class="la la-gear"></span>
                                                 </span>
                                                 <h3 class="m-portlet__head-text">
-                                                    <span class="fas fa-user"></span>&nbsp; CREA:
+                                                    <span class="fas fa-user"></span>&nbsp; CREA: <%=session.getAttribute("us_rolecod")%>
                                                 </h3>
                                             </div>
                                         </div>
@@ -72,17 +72,17 @@
                                                 <div class="col-lg-4">
                                                     <label>NOME</label><label class="m--font-danger">*</label>
                                                     <input type="text" class="form-control m-input m-input--pill obbligatory" 
-                                                           name="nome" id ="nome" placeholder="Nome">
+                                                           name="nome" id ="nome" placeholder="Nome" required="true" maxlength="20" onchange="return fieldNameSurnameNEW(this);" />
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <label>COGNOME</label><label class="m--font-danger">*</label>
                                                     <input type="text" class="form-control m-input m-input--pill obbligatory" 
-                                                           name="cognome" id="cognome" placeholder="Cognome">
+                                                           name="cognome" id="cognome" placeholder="Cognome"required="true" maxlength="20" onchange="return fieldNameSurnameNEW(this);" />
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <label>EMAIL</label><label class="m--font-danger">*</label>
                                                     <input type="text" class="form-control m-input m-input--pill obbligatory" 
-                                                           name="email" id="email" placeholder="Email">
+                                                           name="email" id="email" placeholder="Email"required="true" maxlength="50" onchange="return fieldMail(this);" />
                                                 </div>
                                             </div>
                                             <div class="form-group m-form__group row">
@@ -90,7 +90,7 @@
                                                 <div class="col-lg-4">
                                                     <label>USERNAME</label><label class="m--font-danger">*</label>
                                                     <input type="text" name="username" id="username"  
-                                                           class="form-control m-input m-input--pill obbligatory" placeholder="Username" />
+                                                           class="form-control m-input m-input--pill obbligatory" placeholder="Username" required="true" maxlength="20" onchange="return fieldUsername(this);"/>
                                                 </div>
                                                 <div class="col-lg-4" <%=us_rolecod.equals("1") ? "" : "style='display:none'"%>>
                                                     <label>TIPO</label><label class="m--font-danger">*</label>

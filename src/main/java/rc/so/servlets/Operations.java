@@ -33,6 +33,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import static org.apache.commons.codec.digest.DigestUtils.md5Hex;
+import static rc.so.engine.Action.is_outsourcer;
 import static rc.so.engine.Action.log;
 import static rc.so.util.Utility.EMAILPERSONAL;
 import static rc.so.util.Utility.estraiEccezione;
@@ -74,32 +75,50 @@ public class Operations extends HttpServlet {
         response.setContentType(APPJSON);
         JsonObject resp = new JsonObject();
 
-        String password = getRandomString(8);
+        boolean useroutsourcer = is_outsourcer(request.getSession());
 
-        if (createUser(request.getParameter("nome"), request.getParameter("cognome"),
-                request.getParameter("email"), request.getParameter(USERNAME), md5Hex(password),
-                request.getParameter("tipo"))) {
-            try {
-                boolean res = sendMail(EMAILPERSONAL, new String[]{request.getParameter("email")},
-                        "Nuova utenza creata<br><br>username :" + request.getParameter("username") + "<br>password: "
-                        + password,
-                        "Utente findomestic");
-                if (res) {
-                    resp.addProperty(RESULT, true);
-                    resp.addProperty(MESSAGE, "");
-                } else {
+        String tipo = request.getParameter("tipo");
+        boolean ok = true;
+        if (!useroutsourcer) {
+            if (tipo.equals("1")) {
+                ok = false;
+                resp.addProperty(RESULT, false);
+                resp.addProperty(MESSAGE, "Errore: non sei abilitato ad effettuare questa operazione.");
+            }
+        }
+
+        if (ok) {
+
+            String password = getRandomString(8);
+
+            if (createUser(request.getParameter("nome"), 
+                    request.getParameter("cognome"),
+                    request.getParameter("email"), 
+                    request.getParameter(USERNAME), 
+                    md5Hex(password),
+                    tipo)) {
+                try {
+                    boolean res = sendMail(EMAILPERSONAL, new String[]{request.getParameter("email")},
+                            "Nuova utenza creata<br><br>username :" + request.getParameter("username") + "<br>password: "
+                            + password,
+                            "Utente findomestic");
+                    if (res) {
+                        resp.addProperty(RESULT, true);
+                        resp.addProperty(MESSAGE, "");
+                    } else {
+                        resp.addProperty(RESULT, false);
+                        resp.addProperty(MESSAGE, "Errore: utenza creta ma non e' stato possibile inviare la mail.");
+                    }
+                } catch (Exception e) {
+                    log.severe(estraiEccezione(e));
                     resp.addProperty(RESULT, false);
                     resp.addProperty(MESSAGE, "Errore: utenza creta ma non e' stato possibile inviare la mail.");
                 }
-            } catch (Exception e) {
-                log.severe(estraiEccezione(e));
-                resp.addProperty(RESULT, false);
-                resp.addProperty(MESSAGE, "Errore: utenza creta ma non e' stato possibile inviare la mail.");
-            }
 
-        } else {
-            resp.addProperty(RESULT, false);
-            resp.addProperty(MESSAGE, "Errore: non &egrave; stato possibile creare l'utenza.");
+            } else {
+                resp.addProperty(RESULT, false);
+                resp.addProperty(MESSAGE, "Errore: non &egrave; stato possibile creare l'utenza.");
+            }
         }
 
         response.getWriter().write(resp.toString());
@@ -108,6 +127,7 @@ public class Operations extends HttpServlet {
 
     protected void deleteUser(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("application/json");
         JsonObject resp = new JsonObject();
 
@@ -190,11 +210,12 @@ public class Operations extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if ((String) request.getSession().getAttribute("us_cod") == null) {
+        if ((String) request.getSession().getAttribute("us_rolecod") == null) {
             String p = request.getContextPath();
             request.getSession().invalidate();
             redirect(request, response, p);
         } else {
+            boolean useroutsourcer = is_outsourcer(request.getSession());
             String type = request.getParameter("type");
             switch (type) {
                 case "editpratica":
@@ -204,7 +225,9 @@ public class Operations extends HttpServlet {
                     addUser(request, response);
                     break;
                 case "deleteUser":
-                    deleteUser(request, response);
+                    if (useroutsourcer) {
+                        deleteUser(request, response);
+                    }
                     break;
                 case "PubblicaPratica":
                     PubblicaPratica(request, response);
