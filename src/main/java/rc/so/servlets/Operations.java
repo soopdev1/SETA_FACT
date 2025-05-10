@@ -91,10 +91,10 @@ public class Operations extends HttpServlet {
 
             String password = getRandomString(8);
 
-            if (createUser(request.getParameter("nome"), 
+            if (createUser(request.getParameter("nome"),
                     request.getParameter("cognome"),
-                    request.getParameter("email"), 
-                    request.getParameter(USERNAME), 
+                    request.getParameter("email"),
+                    request.getParameter(USERNAME),
                     md5Hex(password),
                     tipo)) {
                 try {
@@ -219,7 +219,9 @@ public class Operations extends HttpServlet {
             String type = request.getParameter("type");
             switch (type) {
                 case "editpratica":
-                    editpratica(request, response);
+                    if (useroutsourcer) {
+                        editpratica(request, response);
+                    }
                     break;
                 case "addUser":
                     addUser(request, response);
@@ -230,7 +232,9 @@ public class Operations extends HttpServlet {
                     }
                     break;
                 case "PubblicaPratica":
-                    PubblicaPratica(request, response);
+                    if (useroutsourcer) {
+                        PubblicaPratica(request, response);
+                    }
                     break;
                 case "showPDF":
                     showPDF(request, response);
